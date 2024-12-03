@@ -1,0 +1,168 @@
+[2024-11-28 15:15:06,567][flwr][WARNING] - Both server and strategy were provided, ignoring strategy
+[2024-11-28 15:15:06,567][flwr][INFO] - Starting Flower simulation, config: ServerConfig(num_rounds=2, round_timeout=None)
+[2024-11-28 15:15:11,935][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 6687704679.0, 'object_store_memory': 3343852339.0, 'node:172.16.1.8': 1.0, 'GPU': 1.0, 'accelerator_type:G': 1.0, 'CPU': 12.0, 'node:__internal_head__': 1.0}
+[2024-11-28 15:15:11,935][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 6, 'num_gpus': 0.5}
+[2024-11-28 15:15:11,942][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 2 actors
+[2024-11-28 15:15:11,943][flwr][INFO] - Initializing global parameters
+[2024-11-28 15:15:11,943][flwr][INFO] - Requesting initial parameters from one random client
+[2024-11-28 15:15:15,434][flwr][INFO] - Received initial parameters from one random client
+[2024-11-28 15:15:15,434][flwr][INFO] - Evaluating initial parameters
+[2024-11-28 15:15:16,962][flwr][INFO] - initial parameters (loss, other metrics): 0.8231243994808937, {'accuracy': 0.5426356589147286}
+[2024-11-28 15:15:16,962][flwr][INFO] - FL starting
+[2024-11-28 15:15:16,962][flwr][DEBUG] - fit_round 1: strategy sampled 2 clients (out of 4)
+[2024-11-28 15:15:17,278][flwr][ERROR] - Traceback (most recent call last):
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 140, in _submit_job
+    res = self.actor_pool.get_client_result(self.cid, timeout)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 402, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 288, in _fetch_future_result
+    res_cid, res = ray.get(future)  # type: (str, ClientRes)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/ray/_private/worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientException): [36mray::DefaultActor.run()[39m (pid=40003, ip=172.16.1.8, actor_id=3fbd5b9a8a82f0197094285f01000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x7e2c0bf9b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit
+    return maybe_call_fit(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit
+    self.set_parameters(parameters)
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters
+    self.net.load_state_dict(state_dict, strict=True)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict
+    load(self)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load
+    module._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict
+    super(_NormBase, self)._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict
+    input_param = input_param[0]
+IndexError: index 0 is out of bounds for dimension 0 with size 0
+
+The above exception was the direct cause of the following exception:
+
+[36mray::DefaultActor.run()[39m (pid=40003, ip=172.16.1.8, actor_id=3fbd5b9a8a82f0197094285f01000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x7e2c0bf9b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 72, in run
+    raise ClientException(str(message)) from ex
+flwr.simulation.ray_transport.ray_actor.ClientException: 
+>>>>>>>A ClientException occurred.('\n\tSomething went wrong when running your client workload.\n\tClient 3 crashed when the DefaultActor was running its workload.\n\tException triggered on the client side: Traceback (most recent call last):\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 60, in run\n    job_results = job_fn()\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit\n    return maybe_call_fit(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit\n    return client.fit(fit_ins)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit\n    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit\n    self.set_parameters(parameters)\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters\n    self.net.load_state_dict(state_dict, strict=True)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict\n    load(self)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load\n    module._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict\n    super(_NormBase, self)._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict\n    input_param = input_param[0]\nIndexError: index 0 is out of bounds for dimension 0 with size 0\n',)
+
+[2024-11-28 15:15:17,278][flwr][ERROR] - [36mray::DefaultActor.run()[39m (pid=40003, ip=172.16.1.8, actor_id=3fbd5b9a8a82f0197094285f01000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x7e2c0bf9b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit
+    return maybe_call_fit(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit
+    self.set_parameters(parameters)
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters
+    self.net.load_state_dict(state_dict, strict=True)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict
+    load(self)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load
+    module._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict
+    super(_NormBase, self)._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict
+    input_param = input_param[0]
+IndexError: index 0 is out of bounds for dimension 0 with size 0
+
+The above exception was the direct cause of the following exception:
+
+[36mray::DefaultActor.run()[39m (pid=40003, ip=172.16.1.8, actor_id=3fbd5b9a8a82f0197094285f01000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x7e2c0bf9b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 72, in run
+    raise ClientException(str(message)) from ex
+flwr.simulation.ray_transport.ray_actor.ClientException: 
+>>>>>>>A ClientException occurred.('\n\tSomething went wrong when running your client workload.\n\tClient 3 crashed when the DefaultActor was running its workload.\n\tException triggered on the client side: Traceback (most recent call last):\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 60, in run\n    job_results = job_fn()\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit\n    return maybe_call_fit(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit\n    return client.fit(fit_ins)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit\n    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit\n    self.set_parameters(parameters)\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters\n    self.net.load_state_dict(state_dict, strict=True)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict\n    load(self)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load\n    module._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict\n    super(_NormBase, self)._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict\n    input_param = input_param[0]\nIndexError: index 0 is out of bounds for dimension 0 with size 0\n',)
+[2024-11-28 15:15:19,568][flwr][ERROR] - Traceback (most recent call last):
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 140, in _submit_job
+    res = self.actor_pool.get_client_result(self.cid, timeout)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 402, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 288, in _fetch_future_result
+    res_cid, res = ray.get(future)  # type: (str, ClientRes)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/ray/_private/worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientException): [36mray::DefaultActor.run()[39m (pid=40002, ip=172.16.1.8, actor_id=852106a99fc7d2251d2499f701000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x75151f78b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit
+    return maybe_call_fit(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit
+    self.set_parameters(parameters)
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters
+    self.net.load_state_dict(state_dict, strict=True)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict
+    load(self)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load
+    module._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict
+    super(_NormBase, self)._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict
+    input_param = input_param[0]
+IndexError: index 0 is out of bounds for dimension 0 with size 0
+
+The above exception was the direct cause of the following exception:
+
+[36mray::DefaultActor.run()[39m (pid=40002, ip=172.16.1.8, actor_id=852106a99fc7d2251d2499f701000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x75151f78b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 72, in run
+    raise ClientException(str(message)) from ex
+flwr.simulation.ray_transport.ray_actor.ClientException: 
+>>>>>>>A ClientException occurred.('\n\tSomething went wrong when running your client workload.\n\tClient 0 crashed when the DefaultActor was running its workload.\n\tException triggered on the client side: Traceback (most recent call last):\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 60, in run\n    job_results = job_fn()\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit\n    return maybe_call_fit(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit\n    return client.fit(fit_ins)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit\n    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit\n    self.set_parameters(parameters)\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters\n    self.net.load_state_dict(state_dict, strict=True)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict\n    load(self)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load\n    module._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict\n    super(_NormBase, self)._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict\n    input_param = input_param[0]\nIndexError: index 0 is out of bounds for dimension 0 with size 0\n',)
+
+[2024-11-28 15:15:19,568][flwr][ERROR] - [36mray::DefaultActor.run()[39m (pid=40002, ip=172.16.1.8, actor_id=852106a99fc7d2251d2499f701000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x75151f78b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit
+    return maybe_call_fit(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit
+    self.set_parameters(parameters)
+  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters
+    self.net.load_state_dict(state_dict, strict=True)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict
+    load(self)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load
+    load(child, prefix + name + '.')
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load
+    module._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict
+    super(_NormBase, self)._load_from_state_dict(
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict
+    input_param = input_param[0]
+IndexError: index 0 is out of bounds for dimension 0 with size 0
+
+The above exception was the direct cause of the following exception:
+
+[36mray::DefaultActor.run()[39m (pid=40002, ip=172.16.1.8, actor_id=852106a99fc7d2251d2499f701000000, repr=<flwr.simulation.ray_transport.ray_actor.DefaultActor object at 0x75151f78b160>)
+  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 72, in run
+    raise ClientException(str(message)) from ex
+flwr.simulation.ray_transport.ray_actor.ClientException: 
+>>>>>>>A ClientException occurred.('\n\tSomething went wrong when running your client workload.\n\tClient 0 crashed when the DefaultActor was running its workload.\n\tException triggered on the client side: Traceback (most recent call last):\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 60, in run\n    job_results = job_fn()\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 196, in fit\n    return maybe_call_fit(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/client.py", line 217, in maybe_call_fit\n    return client.fit(fit_ins)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/flwr/client/app.py", line 333, in _fit\n    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 72, in fit\n    self.set_parameters(parameters)\n  File "/media/namvq/Data/code_flwr/niid_custom/niid_bench/niid_bench/client_fednova.py", line 48, in set_parameters\n    self.net.load_state_dict(state_dict, strict=True)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1590, in load_state_dict\n    load(self)\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1578, in load\n    load(child, prefix + name + \'.\')\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1574, in load\n    module._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 107, in _load_from_state_dict\n    super(_NormBase, self)._load_from_state_dict(\n  File "/home/namvq/.cache/pypoetry/virtualenvs/niid-bench-orV17zke-py3.10/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1497, in _load_from_state_dict\n    input_param = input_param[0]\nIndexError: index 0 is out of bounds for dimension 0 with size 0\n',)

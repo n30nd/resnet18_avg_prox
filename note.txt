@@ -1,0 +1,8 @@
+theem 1 bo du lieu nua
+so sanh mo hinh tap trung
+lech du lieu qua thi gioi han boi ham log
+
+Với resnet, ảnh đầu vào 224x224 -> chỉnh get_custom_dataset, models, base(config)
+
+Sửa thêm code trong set_parameters của client, evaluate trong server_scaffold (dùng chung) 
+state_dict = OrderedDict({k: torch.from_numpy(np.copy(v)) for k, v in params_dict})
