@@ -61,21 +61,21 @@ from torch.utils.data import DataLoader
 #         x = self.fc3(x)
 #         return x
 
-class EfficientNetModel(nn.Module):
-    #Implement EfficientNet model for transfer learning
-    def __init__(self, num_classes):
-        super().__init__()
-        self.model = torchvision.models.efficientnet_b0(pretrained=True)
-        # Freeze all layers
-        for param in self.model.parameters():
-            param.requires_grad = False
+# class EfficientNetModel(nn.Module):
+#     #Implement EfficientNet model for transfer learning
+#     def __init__(self, num_classes):
+#         super().__init__()
+#         self.model = torchvision.models.efficientnet_b0(pretrained=True)
+#         # Freeze all layers
+#         for param in self.model.parameters():
+#             param.requires_grad = False
         
-        # Replace the classifier with a new one
-        num_ftrs = self.model.classifier[1].in_features
-        self.model.classifier[1] = nn.Linear(num_ftrs, num_classes)
+#         # Replace the classifier with a new one
+#         num_ftrs = self.model.classifier[1].in_features
+#         self.model.classifier[1] = nn.Linear(num_ftrs, num_classes)
 
-    def forward(self, x):
-        return self.model(x)
+#     def forward(self, x):
+#         return self.model(x)
 
 class ResNet18Model(nn.Module):
     # Implement ResNet18 model for transfer learning
@@ -84,9 +84,9 @@ class ResNet18Model(nn.Module):
         # Tải mô hình ResNet18 đã được huấn luyện trước
         self.model = torchvision.models.resnet18(pretrained=True)
         
-        # Đóng băng tất cả các lớp trong mô hình
-        for param in self.model.parameters():
-            param.requires_grad = False
+        # # Đóng băng tất cả các lớp trong mô hình
+        # for param in self.model.parameters():
+        #     param.requires_grad = False
         
         # Thay thế lớp phân loại cuối cùng (fully connected layer) với một lớp mới
         num_ftrs = self.model.fc.in_features  # Số lượng đặc trưng đầu vào của lớp fully connected
